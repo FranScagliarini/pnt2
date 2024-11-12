@@ -1,17 +1,14 @@
 <template>
   <div class="sidebar">
-    <h2 class="bodoni-moda-title">Camila Cabello</h2>
+    <h2 class="bodoni-moda-title">Web Personal</h2>
 
-    <!-- Elementos superiores -->
     <ul class="nav-top">
       <li><RouterLink to="/">Home</RouterLink></li>
       <li><RouterLink to="/productos">Productos</RouterLink></li>
     </ul>
 
-    <!-- Separador flexible -->
     <div class="flex-separator"></div>
 
-    <!-- Elementos inferiores -->
     <ul class="nav-bottom">
       <li><RouterLink to="/carrito">Carrito</RouterLink></li>
       <li><RouterLink to="/about">About</RouterLink></li>
@@ -41,7 +38,6 @@ import { useAuthStore } from "@/stores/authStore";
 const authStore = useAuthStore();
 const isAuthenticated = computed(() => authStore.isAuthenticated);
 
-// Accion de logout desde el store
 const logout = () => {
   authStore.logout();
 };
@@ -50,12 +46,11 @@ const logout = () => {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap");
 
-/* Estilo del sidebar */
 .sidebar {
   width: 250px;
   height: 100vh;
-  background-color: #1f2a48; /* Azul oscuro */
-  color: #efefef; /* Blanco ahumado */
+  background-color: #1f2a48;
+  color: #efefef;
   padding: 20px;
   position: fixed;
   top: 0;

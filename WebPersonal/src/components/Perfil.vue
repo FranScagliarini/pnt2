@@ -5,7 +5,6 @@
       <div class="user-info">
         <p><strong>Correo:</strong> {{ user.correo }}</p>
         <p><strong>Rol:</strong> {{ user.role }}</p>
-        <!-- Mostrar el rol -->
       </div>
     </div>
     <div v-else>
@@ -15,19 +14,17 @@
 </template>
 
 <script setup>
-import { useAuthStore } from "@/stores/authStore"; // Importar el store de autenticación
+import { useAuthStore } from "@/stores/authStore";
 
 const authStore = useAuthStore();
 
-// Accedemos al estado de usuario desde el store
 const user = authStore.user;
 </script>
 
 <style scoped>
-/* Fondo oscuro para la página de perfil */
 .perfil {
   background-color: #121212; /* Fondo negro suave */
-  color: #e0e0e0; /* Gris claro para el texto */
+  color: #e0e0e0;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,7 +33,6 @@ const user = authStore.user;
   font-family: "Arial", sans-serif;
 }
 
-/* Estilo del contenedor de la información del perfil */
 .perfil-info {
   background-color: var(--background-color);
   padding: 2rem;
@@ -46,7 +42,6 @@ const user = authStore.user;
   max-width: 600px;
 }
 
-/* Título del perfil */
 h1 {
   color: var(--accent-color);
   font-size: 2rem;

@@ -1,11 +1,9 @@
-<!-- ProductCard.vue -->
 <template>
   <div class="producto-card">
     <img :src="producto.image" :alt="producto.title" class="producto-imagen" />
     <div class="producto-info">
       <h2>{{ producto.title }}</h2>
       <p class="producto-precio">$ {{ producto.price }}</p>
-      <button class="producto-boton">Agregar al carrito</button>
     </div>
   </div>
 </template>

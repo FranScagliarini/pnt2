@@ -34,23 +34,20 @@
 
 <script setup>
 import { ref } from "vue";
-import { agregarProducto } from "../services/firebaseService"; // Asegúrate de tener este servicio
+import { agregarProducto } from "../services/firebaseService";
 
-// Estado reactivo para el nombre, precio, y mensajes de éxito/error
 const nombre = ref("");
 const precio = ref(0);
 const productoAgregado = ref(false);
 const error = ref(null);
 
-// Método para manejar la agregación de producto
 const agregarProductoHandler = async () => {
   try {
-    // Llamar a la función que agrega el producto a la base de datos
     await agregarProducto(nombre.value, precio.value);
     productoAgregado.value = true;
     error.value = null;
-    nombre.value = ""; // Limpiar el campo de nombre
-    precio.value = 0; // Limpiar el campo de precio
+    nombre.value = "";
+    precio.value = 0;
   } catch (e) {
     error.value = "No se pudo agregar el producto. Intenta nuevamente.";
     productoAgregado.value = false;
@@ -59,17 +56,15 @@ const agregarProductoHandler = async () => {
 </script>
 
 <style scoped>
-/* Elimina los márgenes y bordes predeterminados */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Fondo negro uniforme para todo el contenido */
 .home {
-  background-color: #121212; /* Negro uniforme para el fondo */
-  color: #e0e0e0; /* Gris claro para el texto */
+  background-color: #121212;
+  color: #e0e0e0;
   height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
   display: flex;
   flex-direction: column;

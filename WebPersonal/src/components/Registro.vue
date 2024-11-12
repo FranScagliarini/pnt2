@@ -29,7 +29,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { agregarUsuario } from "../services/mockApi"; // Asegúrate de tener la ruta correcta
+import { agregarUsuario } from "../services/mockApi";
 
 const correo = ref("");
 const password = ref("");
@@ -52,10 +52,9 @@ const registrarUsuario = async () => {
 </script>
 
 <style scoped>
-/* Fondo oscuro y centrado para la página de registro */
 .registro {
-  background-color: #121212; /* Fondo negro suave */
-  color: #e0e0e0; /* Gris claro para el texto */
+  background-color: #121212;
+  color: #e0e0e0;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -64,9 +63,8 @@ const registrarUsuario = async () => {
   font-family: "Arial", sans-serif;
 }
 
-/* Contenedor de formulario */
 form {
-  background-color: #1e1e1e; /* Fondo oscuro */
+  background-color: #1e1e1e;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
