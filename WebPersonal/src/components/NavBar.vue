@@ -5,8 +5,7 @@
     <!-- Elementos superiores -->
     <ul class="nav-top">
       <li><RouterLink to="/">Home</RouterLink></li>
-      <li><RouterLink to="/proyectos">Proyectos</RouterLink></li>
-      <li><RouterLink to="/prints">Prints</RouterLink></li>
+      <li><RouterLink to="/productos">Productos</RouterLink></li>
     </ul>
 
     <!-- Separador flexible -->
@@ -16,6 +15,9 @@
     <ul class="nav-bottom">
       <li><RouterLink to="/carrito">Carrito</RouterLink></li>
       <li><RouterLink to="/about">About</RouterLink></li>
+      <li v-if="!isAuthenticated">
+        <RouterLink to="/registro">Registrarse</RouterLink>
+      </li>
       <li v-if="!isAuthenticated">
         <RouterLink to="/login">Iniciar Sesión</RouterLink>
       </li>
