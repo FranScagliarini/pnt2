@@ -22,6 +22,9 @@
       <li v-if="isAuthenticated">
         <RouterLink to="/perfil">Perfil</RouterLink>
       </li>
+      <li v-if="isAuthenticated && authStore.isAdmin">
+        <RouterLink to="/admin">Admin</RouterLink>
+      </li>
       <li v-if="isAuthenticated">
         <RouterLink to="/" @click="logout">Cerrar Sesión</RouterLink>
       </li>
@@ -45,12 +48,12 @@ const logout = () => {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap");
 
+/* Estilo del sidebar */
 .sidebar {
   width: 250px;
   height: 100vh;
-  background-color: #f0f8ff;
-  border-right: 1px solid #ddd;
-  color: #333;
+  background-color: #1f2a48; /* Azul oscuro */
+  color: #efefef; /* Blanco ahumado */
   padding: 20px;
   position: fixed;
   top: 0;
@@ -58,17 +61,20 @@ const logout = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-right: 2px solid #3b1d53; /* Morado oscuro */
 }
 
+/* Estilo del título */
 .bodoni-moda-title {
   font-family: "Bodoni Moda", serif;
   font-weight: 700;
   font-size: 24px;
   margin-bottom: 20px;
   text-align: center;
-  color: #6a5acd;
+  color: #ffaa4c; /* Naranja brillante */
 }
 
+/* Estilos para los elementos de navegación */
 .nav-top,
 .nav-bottom {
   list-style-type: none;
@@ -83,17 +89,20 @@ const logout = () => {
 
 a {
   text-decoration: none;
-  color: #4682b4;
+  color: #ffaa4c; /* Naranja brillante para enlaces */
   font-weight: 400;
   font-family: "Arial", sans-serif;
   transition: background-color 0.3s, color 0.3s;
   padding: 10px;
   border-radius: 5px;
+  display: block;
+  text-align: center;
 }
 
+/* Estilo al pasar el cursor sobre los enlaces */
 a:hover {
-  background-color: #b0e0e6;
-  color: #005f7f;
+  background-color: #3b1d53; /* Morado oscuro */
+  color: #efefef; /* Blanco ahumado */
 }
 
 /* Separador flexible entre nav-top y nav-bottom */

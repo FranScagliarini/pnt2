@@ -1,0 +1,31 @@
+/* src/styles.css */
+
+/* Paleta de colores */
+:root {
+  --background-color: #1f2a48; /* Azul oscuro */
+  --text-color: #efefef; /* Blanco ahumado */
+  --accent-color: #ffaa4c; /* Naranja brillante */
+  --border-color: #3b1d53; /* Morado oscuro */
+  --hover-background-color: #3b1d53; /* Morado oscuro para hover */
+  --hover-text-color: #efefef; /* Blanco ahumado para hover */
+  --sidebar-width: 250px;
+}
+
+/* Estilos globales para todo el cuerpo */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+  background-color: var(--hover-background-color);
+  color: var(--hover-text-color);
+}

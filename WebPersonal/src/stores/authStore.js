@@ -3,12 +3,13 @@ import { encontrarUsuario } from "@/services/mockApi";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
-    user: null,
+    user: JSON.parse(localStorage.getItem("user")) || null,
     token: null,
-    isAuthenticated: false,
+    isAuthenticated: !!localStorage.getItem("user"),
   }),
   getters: {
     isAdmin: (state) => state.user?.role === "admin",
+    isClient: (state) => state.user?.role === "cliente",
   },
   actions: {
     async login(email, password) {
