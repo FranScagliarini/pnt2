@@ -2,7 +2,7 @@ import axios from "axios";
 
 const MOCKAPI_URL = "https://671da14c09103098807d7159.mockapi.io/api/users";
 
-const fetchUsers = async () => {
+export const fetchUsers = async () => {
   try {
     const response = await axios.get(MOCKAPI_URL);
     return response.data;
@@ -14,7 +14,7 @@ const fetchUsers = async () => {
 
 export const encontrarUsuario = async (correo, password) => {
   const users = await fetchUsers();
-  return users.find((u) => u.correo === correo && u.password === password);
+  return users.find((u) => u.correo === correo);
 };
 
 export const agregarUsuario = async (correo, password) => {

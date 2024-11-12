@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <h2 class="bodoni-moda-title">Web Personal</h2>
+    <h2 class="bodoni-moda-title">Tienda Personal</h2>
 
     <ul class="nav-top">
       <li><RouterLink to="/">Home</RouterLink></li>
@@ -10,7 +10,9 @@
     <div class="flex-separator"></div>
 
     <ul class="nav-bottom">
-      <li><RouterLink to="/carrito">Carrito</RouterLink></li>
+      <li v-if="isAuthenticated">
+        <RouterLink to="/carrito">Carrito</RouterLink>
+      </li>
       <li><RouterLink to="/about">About</RouterLink></li>
       <li v-if="!isAuthenticated">
         <RouterLink to="/registro">Registrarse</RouterLink>
@@ -23,6 +25,9 @@
       </li>
       <li v-if="isAuthenticated && authStore.isAdmin">
         <RouterLink to="/admin">Admin</RouterLink>
+      </li>
+      <li v-if="isAuthenticated && authStore.isAdmin">
+        <RouterLink to="/informe">Informe</RouterLink>
       </li>
       <li v-if="isAuthenticated">
         <RouterLink to="/" @click="logout">Cerrar Sesión</RouterLink>
