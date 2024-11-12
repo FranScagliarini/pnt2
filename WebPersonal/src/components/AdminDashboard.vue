@@ -65,23 +65,21 @@ const agregarProductoHandler = async () => {
 .home {
   background-color: #121212;
   color: #e0e0e0;
-  height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: "Arial", sans-serif;
-  border: none; /* Asegura que no haya borde */
+  border: none;
 }
 
-/* Estilo del título principal */
 h1 {
   font-size: 3rem;
-  color: #ffaa4c; /* Naranja tenue para resaltar */
+  color: #ffaa4c;
   margin-bottom: 30px;
 }
 
-/* Estilos para el formulario de agregar producto */
 .agregar-producto {
   max-width: 400px;
   width: 100%;

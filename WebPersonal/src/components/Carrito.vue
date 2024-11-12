@@ -29,10 +29,9 @@
 import { useCarritoStore } from "@/stores/carritoStore";
 import { computed } from "vue";
 
-// Importa el store del carrito
 const carritoStore = useCarritoStore();
-const items = computed(() => carritoStore.items); // Obtiene los productos en el carrito
-const totalPrecio = computed(() => carritoStore.totalPrecio); // Calcula el total del carrito
+const items = computed(() => carritoStore.items);
+const totalPrecio = computed(() => carritoStore.totalPrecio);
 
 // Acciones del carrito
 const agregarProducto = (producto) => carritoStore.agregarProducto(producto);

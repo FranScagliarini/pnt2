@@ -33,7 +33,6 @@ const onLogin = async () => {
     await authStore.login(email.value, password.value);
 
     if (authStore.isAuthenticated) {
-      // Redirigir en función del rol
       if (authStore.isAdmin) {
         router.push("/admin");
       } else {
@@ -50,14 +49,12 @@ const onLogin = async () => {
 </script>
 
 <style>
-/* Establecer el fondo de la pantalla a negro y usar Flexbox para centrar el contenido */
 body {
-  background-color: #000000; /* Fondo negro */
+  background-color: #000000;
   margin: 0;
   font-family: Arial, sans-serif;
-  color: var(--text-color); /* Blanco ahumado */
+  color: var(--text-color);
 
-  /* Flexbox para centrar el contenedor */
   display: flex;
   justify-content: center; /* Centrado horizontal */
   align-items: center; /* Centrado vertical */

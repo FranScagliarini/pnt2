@@ -19,7 +19,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { fetchUsers } from "@/services/mockApi"; // Asegúrate de la ruta correcta
+import { fetchUsers } from "@/services/mockApi";
 
 const usuarios = ref([]);
 
