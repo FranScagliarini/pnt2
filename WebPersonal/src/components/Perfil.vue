@@ -22,39 +22,45 @@ const user = authStore.user;
 </script>
 
 <style scoped>
+/* Fondo negro para la pantalla completa */
 .perfil {
-  background-color: #121212; /* Fondo negro suave */
-  color: #e0e0e0;
+  background-color: #121212; /* Fondo negro */
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: "Arial", sans-serif;
+  color: #e0e0e0;
 }
 
+/* Contenedor de la información del perfil */
 .perfil-info {
-  background-color: var(--background-color);
+  background-color: #2c2c54; /* Violeta tenue */
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   width: 80%;
   max-width: 600px;
+  color: #e0e0e0;
 }
 
+/* Estilos para el título */
 h1 {
-  color: var(--accent-color);
+  color: #ffaa4c; /* Naranja tenue para el título */
+  text-align: center;
+  margin-bottom: 1.5rem;
   font-size: 2rem;
-  margin-bottom: 1rem;
 }
 
-/* Estilo para la información del usuario */
+/* Estilos para la información del usuario */
 .user-info p {
   font-size: 1.2rem;
   margin: 0.5rem 0;
+  color: #e0e0e0;
 }
 
 .user-info strong {
-  color: var(--accent-color);
+  color: #ffaa4c; /* Naranja tenue */
 }
 </style>

@@ -11,12 +11,8 @@ const routes = [
   { path: "/about", component: () => import("../components/About.vue") },
   { path: "/perfil", component: () => import("../components/Perfil.vue") },
   {
-    path: "/informe",
-    component: () => import("../components/InformeUsuarios.vue"),
-  },
-  {
     path: "/admin",
-    component: () => import("../components/AdminDashboard.vue"),
+    component: () => import("../views/AdminView.vue"),
     meta: { requiresAdmin: true },
   },
   { path: "/registro", component: () => import("../components/Registro.vue") },

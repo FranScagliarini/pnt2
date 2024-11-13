@@ -26,9 +26,6 @@
       <li v-if="isAuthenticated && authStore.isAdmin">
         <RouterLink to="/admin">Admin</RouterLink>
       </li>
-      <li v-if="isAuthenticated && authStore.isAdmin">
-        <RouterLink to="/informe">Informe</RouterLink>
-      </li>
       <li v-if="isAuthenticated">
         <RouterLink to="/" @click="logout">Cerrar Sesión</RouterLink>
       </li>

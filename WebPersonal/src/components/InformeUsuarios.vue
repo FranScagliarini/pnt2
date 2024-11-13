@@ -37,20 +37,22 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* Asegura que el fondo sea continuo incluso con desplazamiento */
 .usuarios {
-  background-color: #121212; /* Fondo oscuro */
-  color: #e0e0e0;
-  height: 100vh;
+  background-color: #121212; /* Fondo negro */
+  color: #e0e0e0; /* Texto claro */
+  min-height: 100vh; /* Fondo cubre al menos la altura de la pantalla */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
   font-family: "Arial", sans-serif;
+  overflow-y: auto; /* Permite el desplazamiento vertical */
 }
 
 h1 {
-  color: #ffaa4c;
+  color: #ffaa4c; /* Naranja tenue */
   text-align: center;
   font-size: 2rem;
   margin-bottom: 40px;
@@ -66,10 +68,11 @@ h1 {
 }
 
 .usuario {
-  background-color: #1e1e1e; /* Fondo más oscuro para las tarjetas */
+  background-color: #2c2c54; /* Violeta tenue */
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #e0e0e0; /* Texto claro */
 }
 
 .usuario-header {
@@ -89,6 +92,6 @@ h1 {
 }
 
 .usuario-details strong {
-  color: #ffaa4c; /* Color de acento */
+  color: #ffaa4c; /* Naranja tenue para resaltar */
 }
 </style>

@@ -3,35 +3,42 @@ import NavBar from "./components/NavBar.vue";
 </script>
 
 <template>
-  <NavBar />
-  <RouterView />
+  <div class="app-container">
+    <div class="sidebar">
+      <NavBar />
+    </div>
+    <div class="content">
+      <RouterView />
+    </div>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.app-container {
+  display: flex;
+  min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+  overflow: hidden; /* Evita desbordamientos */
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.sidebar {
+  width: var(
+    --sidebar-width
+  ); /* Usa el ancho del sidebar definido en merced.css */
+  background-color: var(--background-color); /* Fondo oscuro para el sidebar */
+  color: var(--text-color); /* Color de texto desde variables globales */
+  padding: 1rem;
+  height: 100vh; /* Asegura que el sidebar ocupe toda la altura de la pantalla */
+  box-sizing: border-box; /* Incluye padding en el ancho */
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.content {
+  flex: 1; /* Ocupa todo el espacio restante */
+  background-color: var(
+    --background-color
+  ); /* Fondo de contenido usando variable global */
+  color: var(--text-color);
+  overflow-y: auto;
+  padding: 1rem;
+  box-sizing: border-box; /* Incluye padding en el ancho */
 }
 </style>

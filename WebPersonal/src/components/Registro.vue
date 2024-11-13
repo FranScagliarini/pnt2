@@ -1,29 +1,35 @@
 <template>
   <div class="registro">
-    <h1>Registrar Usuario</h1>
-    <form @submit.prevent="registrarUsuario">
-      <label for="correo">Correo electrónico:</label>
-      <input
-        type="email"
-        id="correo"
-        v-model="correo"
-        placeholder="Introduce tu correo"
-        required
-      />
+    <div class="login-container">
+      <h2>Registrar Usuario</h2>
+      <form @submit.prevent="registrarUsuario">
+        <div class="form-group">
+          <label for="correo">Correo electrónico:</label>
+          <input
+            type="email"
+            id="correo"
+            v-model="correo"
+            placeholder="Introduce tu correo"
+            required
+          />
+        </div>
 
-      <label for="password">Contraseña:</label>
-      <input
-        type="password"
-        id="password"
-        v-model="password"
-        placeholder="Introduce tu contraseña"
-        required
-      />
+        <div class="form-group">
+          <label for="password">Contraseña:</label>
+          <input
+            type="password"
+            id="password"
+            v-model="password"
+            placeholder="Introduce tu contraseña"
+            required
+          />
+        </div>
 
-      <button type="submit">Registrar</button>
-    </form>
+        <button type="submit">Registrar</button>
+      </form>
 
-    <p v-if="mensaje" :class="{ error: error }">{{ mensaje }}</p>
+      <p v-if="mensaje" :class="{ error: error }">{{ mensaje }}</p>
+    </div>
   </div>
 </template>
 
@@ -52,67 +58,73 @@ const registrarUsuario = async () => {
 </script>
 
 <style scoped>
+/* Fondo negro para la pantalla completa */
 .registro {
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #121212; /* Fondo negro */
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-family: "Arial", sans-serif;
+  align-items: center;
 }
 
-form {
-  background-color: #1e1e1e;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 80%;
+/* Contenedor de registro */
+.login-container {
   max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  background-color: #2c2c54; /* Violeta tenue */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #e0e0e0; /* Color claro para el texto */
 }
 
-h1 {
-  color: #ffaa4c; /* Color de acento */
-  font-size: 2rem;
-  margin-bottom: 1rem;
+h2 {
+  color: #ffaa4c; /* Naranja tenue para el título */
   text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
 }
 
 label {
   display: block;
-  margin: 10px 0 5px;
+  font-size: 1rem;
   color: #e0e0e0;
+  margin-bottom: 0.5rem;
 }
 
 input {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
+  padding: 0.8rem;
+  border: 1px solid #333333;
   border-radius: 4px;
-  background-color: #2c2c2c;
+  font-size: 1rem;
+  background-color: #333333;
   color: #e0e0e0;
 }
 
 button {
   width: 100%;
-  padding: 10px;
-  background-color: #4caf50;
+  padding: 0.8rem;
+  background-color: #ffaa4c; /* Naranja de acento */
   color: white;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
   font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #e6952c; /* Color de fondo al hacer hover */
 }
 
 .error {
-  color: red;
+  color: #ff4d4d; /* Rojo para el mensaje de error */
+  font-size: 0.9rem;
+  margin-top: 1rem;
   text-align: center;
-  margin-top: 10px;
 }
 </style>

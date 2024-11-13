@@ -21,7 +21,7 @@ const props = defineProps({
 
 <style scoped>
 .producto-card {
-  background-color: #1e1e1e;
+  background-color: #2c2c54;
   color: #e0e0e0;
   padding: 16px;
   border-radius: 8px;

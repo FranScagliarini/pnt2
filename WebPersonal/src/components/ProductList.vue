@@ -36,6 +36,7 @@ const agregarAlCarrito = (producto) => {
     producto.agregado = false;
   }, 1000);
 };
+
 const fetchProductos = async () => {
   try {
     const response = await axios.get("https://fakestoreapi.com/products");
@@ -53,24 +54,8 @@ onMounted(fetchProductos);
 </script>
 
 <style scoped>
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #000;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-}
-
 .productos {
-  background-color: #000;
+  background-color: #121212;
   color: #e0e0e0;
   padding: 20px;
   border-radius: 8px;
@@ -96,11 +81,12 @@ h1 {
 }
 
 .producto-item {
-  background-color: #1e1e1e;
+  background-color: #2c2c54;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 8px;
   text-align: center;
-  width: 200px;
+  width: 220px;
+  color: #e0e0e0;
 }
 
 .btn-agregar {
