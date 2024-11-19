@@ -6,6 +6,14 @@
         <p><strong>Correo:</strong> {{ user.correo }}</p>
         <p><strong>Rol:</strong> {{ user.role }}</p>
       </div>
+      <div class="perfil-actions">
+        <button class="btn-modificar" @click="modificarContrasena(user)">
+          Modificar Contraseña
+        </button>
+        <button class="btn-eliminar" @click="eliminarCuenta(user.id)">
+          Eliminar Cuenta
+        </button>
+      </div>
     </div>
     <div v-else>
       <p>Cargando información del usuario...</p>
@@ -14,11 +22,49 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { useAuthStore } from "@/stores/authStore";
+import {
+  actualizarUsuario,
+  eliminarUsuario as borrarUsuario,
+} from "@/services/mockApi";
 
 const authStore = useAuthStore();
+const user = ref(authStore.user); // Referencia al usuario autenticado
 
-const user = authStore.user;
+// Modificar contraseña
+const modificarContrasena = async (usuario) => {
+  const nuevaContrasena = prompt(
+    `Ingrese la nueva contraseña para ${usuario.correo}:`,
+    usuario.password
+  );
+  if (nuevaContrasena && nuevaContrasena !== usuario.password) {
+    try {
+      await actualizarUsuario(usuario.id, { password: nuevaContrasena });
+      alert("Contraseña actualizada exitosamente.");
+      user.value.password = nuevaContrasena; // Actualizar localmente
+    } catch (error) {
+      console.error("Error al actualizar la contraseña", error);
+    }
+  }
+};
+
+// Eliminar cuenta
+const eliminarCuenta = async (id) => {
+  if (
+    confirm(
+      "¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer."
+    )
+  ) {
+    try {
+      await borrarUsuario(id);
+      alert("Cuenta eliminada exitosamente.");
+      authStore.logout(); // Cerrar sesión tras eliminar la cuenta
+    } catch (error) {
+      console.error("Error al eliminar la cuenta", error);
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -62,5 +108,40 @@ h1 {
 
 .user-info strong {
   color: #ffaa4c; /* Naranja tenue */
+}
+
+/* Botones de acción */
+.perfil-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 10px;
+}
+
+.perfil-actions .btn-modificar,
+.perfil-actions .btn-eliminar {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.perfil-actions .btn-modificar {
+  background-color: #ffaa4c; /* Naranja */
+  color: #121212;
+}
+
+.perfil-actions .btn-modificar:hover {
+  background-color: #e0953c;
+}
+
+.perfil-actions .btn-eliminar {
+  background-color: #ff4c4c; /* Rojo */
+  color: #ffffff;
+}
+
+.perfil-actions .btn-eliminar:hover {
+  background-color: #e03c3c;
 }
 </style>

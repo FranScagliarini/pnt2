@@ -30,3 +30,23 @@ export const agregarUsuario = async (correo, password) => {
     throw error;
   }
 };
+export const actualizarUsuario = async (id, datosActualizados) => {
+  try {
+    const response = await axios.put(`${MOCKAPI_URL}/${id}`, datosActualizados);
+    return response.data; // Devuelve el usuario actualizado
+  } catch (error) {
+    console.error(`Error al actualizar el usuario con ID ${id}`, error);
+    throw error;
+  }
+};
+
+// Eliminar un usuario existente (DELETE)
+export const eliminarUsuario = async (id) => {
+  try {
+    const response = await axios.delete(`${MOCKAPI_URL}/${id}`);
+    return response.data; // Devuelve una respuesta de éxito
+  } catch (error) {
+    console.error(`Error al eliminar el usuario con ID ${id}`, error);
+    throw error;
+  }
+};

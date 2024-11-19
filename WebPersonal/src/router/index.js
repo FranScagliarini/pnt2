@@ -9,7 +9,11 @@ const routes = [
   },
   { path: "/carrito", component: () => import("../components/Carrito.vue") },
   { path: "/about", component: () => import("../components/About.vue") },
-  { path: "/perfil", component: () => import("../components/Perfil.vue") },
+  {
+    path: "/perfil",
+    component: () => import("../components/Perfil.vue"),
+    meta: { requiresAuth: true },
+  },
   {
     path: "/admin",
     component: () => import("../views/AdminView.vue"),
@@ -26,12 +30,17 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
+  const isAuthenticated = authStore.isAuthenticated;
+  const isAdmin = authStore.isAdmin;
 
-  if (to.meta.requiresAdmin && !authStore.isAdmin) {
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    alert("Debes iniciar sesión para acceder a esta página.");
+    next("/login");
+  } else if (to.meta.requiresAdmin && !isAdmin) {
+    alert("No tienes permisos para acceder a esta página.");
     next("/home");
   } else {
     next();
   }
 });
-
 export default router;
