@@ -14,6 +14,9 @@
           Eliminar Cuenta
         </button>
       </div>
+
+      <!-- Aquí agregamos el componente de Pedidos -->
+      <MisPedidos />
     </div>
     <div v-else>
       <p>Cargando información del usuario...</p>
@@ -28,6 +31,7 @@ import {
   actualizarUsuario,
   eliminarUsuario as borrarUsuario,
 } from "@/services/mockApi";
+import MisPedidos from "@/components/Pedidos.vue"; // Importar el componente de pedidos
 
 const authStore = useAuthStore();
 const user = ref(authStore.user); // Referencia al usuario autenticado

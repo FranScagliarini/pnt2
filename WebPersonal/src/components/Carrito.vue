@@ -27,9 +27,13 @@
 
 <script setup>
 import { useCarritoStore } from "@/stores/carritoStore";
+import { useAuthStore } from "@/stores/authStore"; // Importar el store de autenticación
 import { computed } from "vue";
+import { agregarPedido } from "@/services/mockApiPedidos"; // Importar el servicio para agregar pedidos
 
 const carritoStore = useCarritoStore();
+const authStore = useAuthStore(); // Crear una instancia del store de autenticación
+
 const items = computed(() => carritoStore.items);
 const totalPrecio = computed(() => carritoStore.totalPrecio);
 
@@ -37,7 +41,34 @@ const totalPrecio = computed(() => carritoStore.totalPrecio);
 const agregarProducto = (producto) => carritoStore.agregarProducto(producto);
 const eliminarProducto = (productoId) =>
   carritoStore.eliminarProducto(productoId);
-const comprar = () => carritoStore.comprar();
+
+// Función para realizar la compra
+const comprar = async () => {
+  if (!authStore.isAuthenticated) {
+    alert("Debes iniciar sesión para realizar la compra.");
+    return;
+  }
+
+  const usuario = authStore.user; // Obtener el usuario logueado
+
+  try {
+    // Crear el pedido utilizando la API y los datos del carrito
+    const nombrePedido = "Compra de " + new Date().toLocaleString(); // Puedes ajustar el nombre del pedido
+    const clienteId = usuario.id; // ID del cliente logueado
+    const precioTotal = totalPrecio.value; // Precio total de la compra
+
+    // Agregar el pedido a la API
+    await agregarPedido(nombrePedido, clienteId, precioTotal);
+
+    // Vaciar el carrito después de la compra
+    carritoStore.comprar();
+
+    alert("Compra realizada con éxito!");
+  } catch (error) {
+    console.error("Error al realizar la compra", error);
+    alert("Hubo un error al realizar la compra.");
+  }
+};
 </script>
 
 <style scoped>

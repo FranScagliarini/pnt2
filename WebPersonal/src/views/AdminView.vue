@@ -5,9 +5,14 @@
       <!-- Barra de botones arriba -->
       <div class="button-bar">
         <button @click="mostrarDashboard" class="btn-dashboard">
-          Dashboard
+          FireBase (beta)
         </button>
-        <button @click="mostrarInformes" class="btn-informes">Informes</button>
+        <button @click="mostrarInformes" class="btn-informes">
+          Informe Usuarios
+        </button>
+        <button @click="mostrarInformePedidos" class="btn-informes">
+          Informe Pedidos
+        </button>
       </div>
 
       <!-- Contenido desplegable debajo de los botones -->
@@ -18,6 +23,9 @@
         <div v-if="mostrarContenido.informes">
           <InformesUsuarios />
         </div>
+        <div v-if="mostrarContenido.informePedidos">
+          <InformePedidos />
+        </div>
       </div>
     </div>
   </div>
@@ -27,22 +35,32 @@
 import { ref } from "vue";
 import AdminDashboard from "../components/AdminDashboard.vue";
 import InformesUsuarios from "../components/InformeUsuarios.vue";
+import InformePedidos from "../components/InformePedidos.vue"; // Importación del componente InformePedidos
 
 // Variables para controlar qué componente se debe mostrar
 const mostrarContenido = ref({
   dashboard: false,
   informes: false,
+  informePedidos: false, // Añadido el control para InformePedidos
 });
 
 // Funciones para manejar la visibilidad de los componentes
 const mostrarDashboard = () => {
   mostrarContenido.value.dashboard = true;
   mostrarContenido.value.informes = false;
+  mostrarContenido.value.informePedidos = false;
 };
 
 const mostrarInformes = () => {
   mostrarContenido.value.informes = true;
   mostrarContenido.value.dashboard = false;
+  mostrarContenido.value.informePedidos = false;
+};
+
+const mostrarInformePedidos = () => {
+  mostrarContenido.value.informePedidos = true;
+  mostrarContenido.value.dashboard = false;
+  mostrarContenido.value.informes = false;
 };
 </script>
 
