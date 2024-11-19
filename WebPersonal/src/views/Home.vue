@@ -36,16 +36,18 @@ h1 {
 /* Estilo del contenedor de la imagen */
 .image-container {
   max-width: 80%; /* Ajusta el tamaño del contenedor */
+  max-height: 70vh; /* Limita la altura del contenedor a un porcentaje de la altura de la pantalla */
   padding: 20px;
   background-color: #222; /* Fondo oscuro para resaltar la imagen */
   border-radius: 10px; /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
+  overflow: hidden; /* Evita que la imagen se desborde fuera del contenedor */
 }
 
 /* Estilo de la imagen */
 .imagen-home {
-  width: 100%; /* Ajustar la imagen al tamaño del contenedor */
-  height: auto;
-  border-radius: 8px; /* Bordes redondeados para la imagen */
+  width: 100%; /* Ajusta la imagen al tamaño del contenedor */
+  height: 100%; /* Ajusta la imagen a la altura del contenedor */
+  object-fit: contain; /* Asegura que la imagen se ajuste sin distorsionarse */
 }
 </style>
